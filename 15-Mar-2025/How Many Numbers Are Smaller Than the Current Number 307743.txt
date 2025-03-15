@@ -1,0 +1,19 @@
+# Problem: How Many Numbers Are Smaller Than the Current Number - https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var smallerNumbersThanCurrent = function(nums) {
+    let sortedNums=[...nums].sort((a,b)=>a-b);
+    let map=new Map();
+
+    for(let i=0;i<sortedNums.length;i++){
+       if(!map.has(sortedNums[i])){
+        map.set(sortedNums[i],i)
+       }
+    }
+
+    let output=nums.map(num=>map.get(num));
+    return output;
+};
